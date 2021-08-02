@@ -1,0 +1,22 @@
+<tbody id="userListing">
+  <% @users.each do |user| %>
+    <%= content_tag :tr, id: dom_id(user) do %>
+      <td><%= user.name %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user, 
+                data: { 
+                  "turbo-method": :delete,
+                    controller: "confirmation",
+                    "confirmation-message-value": 'Are you sure?',
+                    action: "confirmation#confirm" 
+                } %></td>
+    <% end %>
+  <% end %>
+
+  <% if @users.empty? %>
+    <tr>
+      <td><em>No matching users</em></td>
+    </tr>
+  <% end %>
+</tbody>

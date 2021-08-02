@@ -53,6 +53,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
+      format.turbo_stream { }
     end
   end
 
