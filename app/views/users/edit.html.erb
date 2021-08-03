@@ -1,8 +1,4 @@
-<%= render partial: 'show_user_title' %>
-
-<%= turbo_frame_tag "user" do %>
+<%= turbo_frame_tag dom_id(@user) do %>
   <%= render 'form', user: @user %>
-
-  <%= link_to 'Show', @user %> |
-  <%= link_to 'Back', users_path, data: { "turbo-frame": "_top" } %>
+  <%= link_to 'Cancel', @user %><br>
 <% end %>

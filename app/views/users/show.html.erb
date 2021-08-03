@@ -1,13 +1,6 @@
-<%= render partial: 'show_user_title' %>
+<p id="notice"><%= notice %></p>
 
-<%= turbo_frame_tag "user" do %>
-  <p id="notice"><%= notice %></p>
+<%= render @user %>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path, data: { "turbo-frame": "_top" } %>
-<% end %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

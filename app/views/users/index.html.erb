@@ -1,23 +1,22 @@
+<h1>Users</h1>
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<%= turbo_stream_from "users" %>
 
 <%= form_with url: search_users_path do |form| %>
-<%= form.text_field 'search_term', placeholder: 'enter search terms...' %>
-<%= form.submit 'Search', data: { disable_with: false } %>
+  <%= form.text_field 'search_term', placeholder: 'Enter name...' %>
+  <%= form.submit 'Search', data: { disable_with: false } %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"><th>
-    </tr>
-  </thead>
+<br>
 
-  <%= render partial: "users/listing" %>
-</table>
+<%= turbo_frame_tag "user_form" do %>
+  <%= render "users/form", user: @user %>
+<% end %>
 
-<br />
+<br>
 
-<%= link_to 'New User', new_user_path %>
+<%= turbo_frame_tag "users" do %>
+  <%= render @users %>
+<% end %>
+

@@ -1,0 +1,12 @@
+  <%= turbo_frame_tag dom_id(user) do %>
+    <%= user.name %>
+    <%= link_to "Edit", edit_user_path(user) %> &nbsp; 
+    <%= link_to "Delete", user, 
+      data: {
+            "turbo-method": :delete,
+            controller: "confirmation",
+            "confirmation-message-value": 'Are you sure?',
+            action: "confirmation#confirm" 
+      } %>
+    <br>
+  <% end %>
