@@ -1,3 +1,7 @@
 <%= turbo_frame_tag "users" do %>
-  <%= render partial: 'users/user', :collection => @users %>
+  <% if @users.empty? %>
+    <div><em>No matching users</em></div>
+  <% else %>
+    <%= render partial: 'users/user', collection: @users %>
+  <% end %>
 <% end %>
